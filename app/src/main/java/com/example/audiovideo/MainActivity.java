@@ -15,7 +15,7 @@ import android.widget.VideoView;
 
 import java.net.URI;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener { //mainactivity implements the methods of onClickListener
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{ //mainactivity implements the methods of onClickListener so this is also the method of setting onClickListener
 
     private VideoView myVideoView;
     private Button playBtn,btnPlayMusic,btnPauseMusic;
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private AudioManager audioManager;
     private MediaPlayer mediaPlayer;
     private SeekBar seekBarVolume;
+    private SeekBar seekBarMove;
 
 
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnPlayMusic=findViewById(R.id.btnPlayMusic);
         btnPauseMusic=findViewById(R.id.btnPauseMusic);
         seekBarVolume=findViewById(R.id.seekBarVolume);
+        seekBarMove=findViewById(R.id.seekBarMove);
 
         btnPlayMusic.setOnClickListener(MainActivity.this);
         btnPauseMusic.setOnClickListener(MainActivity.this);
@@ -64,6 +66,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,progress,0);
                 }
 
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        seekBarMove.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if(fromUser==true){
+                    //Toast.makeText(MainActivity.this,progress+"",Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
